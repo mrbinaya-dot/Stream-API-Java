@@ -1,31 +1,75 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
 public class main {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date joiningDateRam = dateFormat.parse("01-04-2002");
+        Date joiningDateSita = dateFormat.parse("08-06-2010");
+        Date joiningDateHari = dateFormat.parse("01-06-2008");
+        Date joiningDateAnish = dateFormat.parse("01-06-2000");
 
-//        List<Integer> list = Arrays.asList(4,5,10,15);
-        // Filter
+        List<Employee> emp = Arrays.asList(
+                new Employee("ram", 500000.0, joiningDateRam, "M"),
+                new Employee("Sita", 400000.0, joiningDateSita, "F"),
+                new Employee("Hari", 300000.0, joiningDateHari, "M"),
+                new Employee("Anish", 560000.0, joiningDateAnish, "M")
 
-//        List<Integer> listFilter= list.stream().filter(integer -> integer%2==0).toList();
-//        System.out.println(listFilter);
 
-        /*   MAp*/
+        );
 
-//        List<Integer> mapList = list.stream().map(i-> i*2).toList();
-//        System.out.println(mapList);
+           /* to find the highest salary*/
 
-/*//        add 10 marks to failed student*/
 
-//        List<Integer> list = Arrays.asList(40,50,10,15);
-//        List<Integer> passStudent = list.stream().filter(i-> i<30).map(i-> i + 10).toList();
-//        System.out.println(passStudent +"passed");
+//            Employee maxSal= emp.stream().max((a,b)->Double.compare(b.getSalary(),a.getSalary())).get();
+//            System.out.println(maxSal);
 
-//        List<Integer> list = Arrays.asList(40,50,10,15,3,45,76,34,2433,23,34,54,45,5,45);
-//        List<Integer> sortlist = list.stream().sorted().toList();
-//        System.out.println(sortlist);
+     /* to find second highest salary*/
 
-//        List<Integer> list = Arrays.asList(40,50,10,15,3,45,76,34,2433,23,34,54,45,5,45);
-//        List<Integer> sortlist = list.stream().sorted((a,b )-> b.compareTo(a)).toList();
-//        System.out.println(sortlist);
+
+//        Optional<Employee> Secmax =emp.stream().sorted((a, b)-> Double.compare(a.getSalary(),b.getSalary()))
+//                        .skip(1)
+//                        .findFirst();
+//        Secmax.ifPresent(System.out::println);
+
+
+
+          /*  senior joining date*/
+
+
+//        Optional<Employee> joindate = emp.stream().min((a,b)->a.getJoiningDate().compareTo(b.getJoiningDate()))
+//                ;
+//        joindate.ifPresent(System.out::println);
+
+
+
+
+      /*  count female */
+
+
+//        Long  genCount = emp.stream().filter((a)->"F".equals(a.getGender())).count();
+//        System.out.println("number of females" + genCount);
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //       Sortstring.sortByLength();
 //       Sortstring.minMax();
@@ -37,6 +81,6 @@ public class main {
 
 
 
-}
+
 
 
